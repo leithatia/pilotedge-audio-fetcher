@@ -189,3 +189,5 @@ poetry.toml
 # LSP config files
 pyrightconfig.json
 
+# Audio downloads
+audio/*
