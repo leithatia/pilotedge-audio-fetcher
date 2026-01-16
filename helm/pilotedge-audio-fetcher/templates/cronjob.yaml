@@ -15,7 +15,7 @@ spec:
               imagePullPolicy: {{ .Values.image.pullPolicy }}
               volumeMounts:
                 - name: pe-audio-volume
-                  mountPath: /media
+                  mountPath: /media/pe-audio
           volumes:
             - name: pe-audio-volume
               persistentVolumeClaim:
