@@ -22,7 +22,7 @@ controllers = {
     "Western": 14010,
 }
 
-out_dir_base = Path(f"media/pe-audio/{year}_{month:02d}_{day:02d}")
+out_dir_base = Path(f"/media/pe-audio/{year}_{month:02d}_{day:02d}")
 
 def main():
     out_dir_base.mkdir(parents=True, exist_ok=True)
@@ -52,8 +52,6 @@ def download(url: str, controller_id: str, hour: int):
                 for chunk in r.iter_content(chunk_size=8192):
                     if chunk:
                         f.write(chunk)
-                
-                print(f"File downloaded: {url}")
 
         elif r.status_code == 404:
             print(f"File not found: {url}")
