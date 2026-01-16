@@ -22,7 +22,7 @@ controllers = {
     "Western": 14010,
 }
 
-out_dir_base = Path(f"audio/{year}_{month:02d}_{day:02d}")
+out_dir_base = Path(f"media/pe-audio/{year}_{month:02d}_{day:02d}")
 
 def main():
     out_dir_base.mkdir(parents=True, exist_ok=True)
