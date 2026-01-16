@@ -13,5 +13,12 @@ spec:
             - name: pilotedge-audio-fetcher
               image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
               imagePullPolicy: {{ .Values.image.pullPolicy }}
-          restartPolicy: OnFailure
+              volumeMounts:
+                - name: pe-audio-volume
+                  mountPath: /media
+          volumes:
+            - name: pe-audio-volume
+              persistentVolumeClaim:
+               claimName: pvc-pe-audio
+          restartPolicy: Never
 
