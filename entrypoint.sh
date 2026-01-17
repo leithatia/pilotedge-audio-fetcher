@@ -1,3 +1,5 @@
+#!/bin/sh
+
 set -e
 
 DAY_DIR=$(ls /work)
