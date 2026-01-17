@@ -22,10 +22,11 @@ controllers = {
     "Western": 14010,
 }
 
-out_dir_base = Path(f"/media/pe-audio/{year}_{month:02d}_{day:02d}")
+date_dir = f"{year:04d}-{month:02d}-{day:02d}"
+working_dir_base = Path(f"/work") / date_dir
 
 def main():
-    out_dir_base.mkdir(parents=True, exist_ok=True)
+    working_dir_base.mkdir(parents=True, exist_ok=True)
 
     for controller_id in controllers:
         for hour in range(7, 24):
@@ -40,7 +41,7 @@ def main():
 
 
 def download(url: str, controller_id: str, hour: int):
-    out_file = out_dir_base / controller_id / f"{year}-{month:02d}-{day:02d}-{hour:02d}.mp3"
+    out_file = working_dir_base / controller_id / f"{hour:02d}.mp3"
 
     try:
         r = requests.get(url, headers=HEADERS, timeout=30)

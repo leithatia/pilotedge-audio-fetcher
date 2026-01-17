@@ -1,14 +1,21 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine
+
+RUN apk add --no-cache ffmpeg
 
 WORKDIR /app
 
-RUN useradd -r -u 10001 appuser
+RUN adduser -D -u 10001 appuser
 
 COPY fetch.py .
+COPY entrypoint.sh .
+
 RUN pip install --no-cache-dir requests
 
-RUN chown -R appuser:appuser /app
+RUN chmod +x /app/entrypoint.sh \
+ && mkdir /work \
+ && chown -R appuser:appuser /app /work
+
 USER appuser
 
-CMD ["python", "fetch.py"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
