@@ -1,6 +1,9 @@
 #!/bin/sh
-
 set -e
+
+echo "Starting PilotEdge audio fetch"
+python /app/fetch.py
+echo "Fetch complete"
 
 DAY_DIR=$(ls /work)
 OUTPUT_BASE="/media/pe-audio/$DAY_DIR"
